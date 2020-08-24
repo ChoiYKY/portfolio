@@ -194,6 +194,14 @@ h3 {
      font-size: var(--font-small);
  }
 
+ .major:nth-child(2) {
+     margin-right: 40px;
+ }
+
+ .about__majors:nth-child(3) {
+     margin-right: 40px;
+ }
+
  .major__icon:hover i{
      color: var(--color-dark-pink);
      transform: rotate(-30deg) scale(1.1);
@@ -233,6 +241,8 @@ h3 {
 
  #skills {
      background-color: var(--color-yellow);
+     padding: 20px;
+     margin: 40px;
  }
 
  .skillset {
@@ -422,4 +432,31 @@ h3 {
 
 .testimonial__speech-bubble a {
     color: var(--color-pink)
+}
+
+/* Contact */
+#contact {
+    background-color: var(--color-pink);
+}
+
+.contact__title, .contact__email, .contact__right {
+    color: var(--color-white)
+}
+
+.contact__title {
+    margin: 32px 0;
+}
+
+.contact__links {
+    font-size: var(--font-large);
+    margin: 24px 0;
+}
+
+.contact__links i:hover {
+    transform: scale(1.1);
+    color: var(--color-yellow);
+}
+
+.contact__links i {
+    transition: all var(--animation-duration) ease-in;
 }
