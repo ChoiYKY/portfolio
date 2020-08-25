@@ -19,7 +19,13 @@ document.addEventListener('scroll', () => {
 
 //Handle scrolling when tapping on the navbar menu;
 
+function scrollIntoView(selection) {
+    const scrollTo = document.querySelector(selection);
+    scrollTo.scrollIntoView({ behavior: "smooth" });
+}
+
 const navbarMenu = document.querySelector('.navbar__menu');
+
 navbarMenu.addEventListener('click', (event) => {
     const target = event.target;
     const link = target.dataset.link;
@@ -28,6 +34,13 @@ navbarMenu.addEventListener('click', (event) => {
         return;
     }
 
-    const scrollTo = document.getElementById(link);
-    scrollTo.scrollIntoView({ behavior: "smooth" });
+    scrollIntoView(link);
+});
+
+//Handle click on "contact me" button on home;
+
+const contact_btn = document.querySelector('.home__contact');
+
+contact_btn.addEventListener('click', () => {
+    scrollIntoView('#contact');
 });
