@@ -55,3 +55,17 @@ document.addEventListener('scroll', () => {
         homeElements[i].style.opacity = 1 - window.scrollY / (homeHeight - navbarHeight);
     };
 });
+
+//Show "arrow up" button when scrolling down;
+
+const arrowUp = document.querySelector('.arrowUp_icon');
+document.addEventListener('scroll', () => {
+    if (window.scrollY > homeHeight / 2)
+        arrowUp.classList.add('visible')
+    else
+        arrowUp.classList.remove('visible')
+});
+
+arrowUp.addEventListener('click', () => {
+    scrollIntoView('#home');
+});
