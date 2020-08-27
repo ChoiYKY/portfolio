@@ -24,17 +24,25 @@ function scrollIntoView(selection) {
     scrollTo.scrollIntoView({ behavior: "smooth" });
 }
 
-const navbarMenu = document.querySelector('.navbar__menu');
+const navbarMenu1 = document.querySelector('.navbar__menu1');
+const navbarMenu2 = document.querySelector('.navbar__menu2');
 
-navbarMenu.addEventListener('click', (event) => {
+navbarMenu1.addEventListener('click', (event) => {
     const target = event.target;
     const link = target.dataset.link;
 
     if (link == null) {
         return;
     }
-
+    navbarMenu2.classList.remove('open');
     scrollIntoView(link);
+});
+
+// Navbar toggle button for small screen;
+
+const toggle_btn = document.querySelector('.navbar__toggle-btn');
+toggle_btn.addEventListener('click', () => {
+    navbarMenu2.classList.toggle('open');
 });
 
 //Handle click on "contact me" button on home;
@@ -82,7 +90,7 @@ workBtnContainer.addEventListener('click', (e) => {
         return;
 
     const preSelected = workBtnContainer.querySelector('.active');
-    const curSelected = e.target;
+    const curSelected = e.target.nodeName === 'BUTTON' ? e.target : e.target.parentNode;
 
     preSelected.classList.remove('active');
     curSelected.classList.add('active');
@@ -98,6 +106,6 @@ workBtnContainer.addEventListener('click', (e) => {
             }
         });
         projectContainer.classList.remove('anim-out');
-    }, 300)
+    }, 300);
 });
 
