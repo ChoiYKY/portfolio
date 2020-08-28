@@ -6,7 +6,6 @@ const navbar = document.querySelector('#navbar');
 const navbarHeight = navbar.getBoundingClientRect().height;
 
 document.addEventListener('scroll', () => {
-    console.log(`scroll : ${window.scrollY}`);
     if (window.scrollY > navbarHeight) {
         navbar.classList.add('navbar--move');
     }
@@ -58,7 +57,7 @@ let homeHeight = home.getBoundingClientRect().height;
 const homeElements = document.querySelectorAll('.home');
 document.addEventListener('scroll', () => {
     for (let i = 0; i < homeElements.length; i++) {
-        homeElements[i].style.opacity = 1 - window.scrollY / (homeHeight - navbarHeight);
+        homeElements[i].style.opacity = 1 - window.scrollY / homeHeight;
     };
 });
 
@@ -149,7 +148,6 @@ window.visualViewport.addEventListener('resize', () => {
 
 const navbarMenu = document.querySelectorAll('.navbar__menu__item');
 document.addEventListener('scroll', () => {
-    console.log(`limit : ${scrollLimit}`);
     const preSection = document.querySelector('.selected');
     for (let i = 0; i < sectionScroll.length - 1; i++) {
         if (scrollLimit <= window.scrollY) {
