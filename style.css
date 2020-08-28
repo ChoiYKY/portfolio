@@ -139,7 +139,7 @@ h3 {
 .navbar__toggle-btn {
   position: absolute;
   top: 18px;
-  right: 14px;
+  right: 8px;
   font-size: 24px;
   color: var(--color-white);
   display: none;
@@ -624,8 +624,8 @@ h3 {
 
   .category__btn.active .category__count,
   .category__btn:hover .category__count {
-    top: 6px;
-    right: 52px;
+    top: 5px;
+    right: 40px;
   }
 
   .testimonial__avatar {
