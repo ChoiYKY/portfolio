@@ -6,9 +6,7 @@ const navbar = document.querySelector('#navbar');
 const navbarHeight = navbar.getBoundingClientRect().height;
 
 document.addEventListener('scroll', () => {
-    console.log(window.scrollX);
-    console.log(window.scrollY);
-    console.log(`navbarHeight : ${navbarHeight}`);
+    console.log(`scroll : ${window.scrollY}`);
     if (window.scrollY > navbarHeight) {
         navbar.classList.add('navbar--move');
     }
@@ -56,7 +54,7 @@ contact_btn.addEventListener('click', () => {
 //Make home slowly fade to transparent as the window scrolls down;
 
 const home = document.getElementById('home');
-const homeHeight = home.getBoundingClientRect().height;
+let homeHeight = home.getBoundingClientRect().height;
 const homeElements = document.querySelectorAll('.home');
 document.addEventListener('scroll', () => {
     for (let i = 0; i < homeElements.length; i++) {
@@ -78,7 +76,7 @@ arrowUp.addEventListener('click', () => {
     scrollIntoView('#home');
 });
 
-//Project
+//Filter Projects
 
 const workBtnContainer = document.querySelector('.work__categories');
 const projectContainer = document.querySelector('.work__projects');
@@ -109,3 +107,77 @@ workBtnContainer.addEventListener('click', (e) => {
     }, 300);
 });
 
+//Set border to selected Navbar menu;
+
+const about = document.getElementById('about');
+let aboutHeight = about.getBoundingClientRect().height;
+
+const skills = document.getElementById('skills');
+let skillsHeight = skills.getBoundingClientRect().height;
+
+const work = document.getElementById('work');
+let workHeight = work.getBoundingClientRect().height;
+
+const testimomials = document.getElementById('testimonials');
+let testimonialsHeight = testimomials.getBoundingClientRect().height;
+
+const contact = document.getElementById('contact');
+let contactHeight = contact.getBoundingClientRect().height;
+
+let sectionScroll = [0, homeHeight - 30, aboutHeight - 30, skillsHeight - 30, workHeight - 30, testimonialsHeight - 30, contactHeight - 30];
+let scrollLimit = document.documentElement.scrollHeight - window.innerHeight - 10;
+
+for (let i = 1; i < sectionScroll.length; i++) {
+    sectionScroll[i] += sectionScroll[i - 1];
+}
+
+window.visualViewport.addEventListener('resize', () => {
+    homeHeight = home.getBoundingClientRect().height;
+    aboutHeight = about.getBoundingClientRect().height;
+    skillsHeight = skills.getBoundingClientRect().height;
+    workHeight = work.getBoundingClientRect().height;
+    testimonialsHeight = testimomials.getBoundingClientRect().height;
+    contactHeight = contact.getBoundingClientRect().height;
+
+    sectionScroll = [0, homeHeight - 30, aboutHeight - 30, skillsHeight - 30, workHeight - 30, testimonialsHeight - 30, contactHeight - 30];
+    scrollLimit = document.documentElement.scrollHeight - window.innerHeight - 30;
+
+    for (let i = 1; i < sectionScroll.length; i++) {
+        sectionScroll[i] += sectionScroll[i - 1];
+    }
+});
+
+const navbarMenu = document.querySelectorAll('.navbar__menu__item');
+document.addEventListener('scroll', () => {
+    console.log(`limit : ${scrollLimit}`);
+    const preSection = document.querySelector('.selected');
+    for (let i = 0; i < sectionScroll.length - 1; i++) {
+        if (scrollLimit <= window.scrollY) {
+            preSection.classList.remove('selected');
+            navbarMenu[navbarMenu.length - 1].classList.add('selected');
+            return;
+        }
+        if (sectionScroll[i] <= window.scrollY && window.scrollY < sectionScroll[i + 1]) {
+            preSection.classList.remove('selected');
+            navbarMenu[i].classList.add('selected');
+            return;
+        }
+    }
+});
+
+window.visualViewport.addEventListener('resize', () => {
+    console.log(`limit : ${scrollLimit}`);
+    const preSection = document.querySelector('.selected');
+    for (let i = 0; i < sectionScroll.length - 1; i++) {
+        if (scrollLimit <= window.scrollY) {
+            preSection.classList.remove('selected');
+            navbarMenu[navbarMenu.length - 1].classList.add('selected');
+            return;
+        }
+        if (sectionScroll[i] <= window.scrollY && window.scrollY < sectionScroll[i + 1]) {
+            preSection.classList.remove('selected');
+            navbarMenu[i].classList.add('selected');
+            return;
+        }
+    }
+});
