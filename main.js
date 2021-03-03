@@ -4,14 +4,7 @@
 
 let pageCnt = 1;
 
-const sections = [
-  "#home",
-  "#about",
-  "#skills",
-  "#work",
-  "#testimonials",
-  "#contact",
-];
+const sections = ["#home", "#about", "#skills", "#work", "#contact"];
 
 if (window.performance) {
   pageCnt = 1;
@@ -100,7 +93,7 @@ const contact_btn = document.querySelector(".home__contact");
 
 contact_btn.addEventListener("click", () => {
   scrollIntoView("#contact");
-  pageCnt = 6;
+  pageCnt = 5;
 });
 
 //Make home slowly fade to transparent as the window scrolls down;
@@ -186,101 +179,100 @@ workBtnContainer.addEventListener("click", (e) => {
 
 //Set border to selected Navbar menu;
 
-const about = document.getElementById("about");
-let aboutHeight = about.getBoundingClientRect().height;
+// const about = document.getElementById("about");
+// let aboutHeight = about.getBoundingClientRect().height;
 
-const skills = document.getElementById("skills");
-let skillsHeight = skills.getBoundingClientRect().height;
+// const skills = document.getElementById("skills");
+// let skillsHeight = skills.getBoundingClientRect().height;
 
-const work = document.getElementById("work");
-let workHeight = work.getBoundingClientRect().height;
+// const work = document.getElementById("work");
+// let workHeight = work.getBoundingClientRect().height;
 
-const testimomials = document.getElementById("testimonials");
-let testimonialsHeight = testimomials.getBoundingClientRect().height;
+// const testimomials = document.getElementById("testimonials");
+// let testimonialsHeight = testimomials.getBoundingClientRect().height;
 
-const contact = document.getElementById("contact");
-let contactHeight = contact.getBoundingClientRect().height;
+// const contact = document.getElementById("contact");
+// let contactHeight = contact.getBoundingClientRect().height;
 
-let sectionScroll = [
-  0,
-  homeHeight - 30,
-  aboutHeight - 30,
-  skillsHeight - 30,
-  workHeight - 30,
-  testimonialsHeight - 30,
-  contactHeight - 30,
-];
-let scrollLimit =
-  document.documentElement.scrollHeight - window.innerHeight - 10;
+// let sectionScroll = [
+//   0,
+//   homeHeight - 30,
+//   aboutHeight - 30,
+//   skillsHeight - 30,
+//   workHeight - 30,
+//   testimonialsHeight - 30,
+//   contactHeight - 30,
+// ];
+// let scrollLimit =
+//   document.documentElement.scrollHeight - window.innerHeight - 10;
 
-for (let i = 1; i < sectionScroll.length; i++) {
-  sectionScroll[i] += sectionScroll[i - 1];
-}
+// for (let i = 1; i < sectionScroll.length; i++) {
+//   sectionScroll[i] += sectionScroll[i - 1];
+// }
 
-window.visualViewport.addEventListener("resize", () => {
-  homeHeight = home.getBoundingClientRect().height;
-  aboutHeight = about.getBoundingClientRect().height;
-  skillsHeight = skills.getBoundingClientRect().height;
-  workHeight = work.getBoundingClientRect().height;
-  testimonialsHeight = testimomials.getBoundingClientRect().height;
-  contactHeight = contact.getBoundingClientRect().height;
+// window.visualViewport.addEventListener("resize", () => {
+//   homeHeight = home.getBoundingClientRect().height;
+//   aboutHeight = about.getBoundingClientRect().height;
+//   skillsHeight = skills.getBoundingClientRect().height;
+//   workHeight = work.getBoundingClientRect().height;
+//   testimonialsHeight = testimomials.getBoundingClientRect().height;
+//   contactHeight = contact.getBoundingClientRect().height;
 
-  sectionScroll = [
-    0,
-    homeHeight - 30,
-    aboutHeight - 30,
-    skillsHeight - 30,
-    workHeight - 30,
-    testimonialsHeight - 30,
-    contactHeight - 30,
-  ];
-  scrollLimit = document.documentElement.scrollHeight - window.innerHeight - 30;
+//   sectionScroll = [
+//     0,
+//     homeHeight - 30,
+//     aboutHeight - 30,
+//     skillsHeight - 30,
+//     workHeight - 30,
+//     testimonialsHeight - 30,
+//     contactHeight - 30,
+//   ];
+//   scrollLimit = document.documentElement.scrollHeight - window.innerHeight - 30;
 
-  for (let i = 1; i < sectionScroll.length; i++) {
-    sectionScroll[i] += sectionScroll[i - 1];
-  }
-});
+//   for (let i = 1; i < sectionScroll.length; i++) {
+//     sectionScroll[i] += sectionScroll[i - 1];
+//   }
+// });
 
-const navbarMenu = document.querySelectorAll(".navbar__menu__item");
-document.addEventListener("scroll", () => {
-  // console.log(`limit : ${scrollLimit}`);
-  const preSection = document.querySelector(".selected");
-  for (let i = 0; i < sectionScroll.length - 1; i++) {
-    if (scrollLimit <= window.scrollY) {
-      preSection.classList.remove("selected");
-      navbarMenu[navbarMenu.length - 1].classList.add("selected");
-      return;
-    }
-    if (
-      sectionScroll[i] <= window.scrollY &&
-      window.scrollY < sectionScroll[i + 1]
-    ) {
-      preSection.classList.remove("selected");
-      navbarMenu[i].classList.add("selected");
-      return;
-    }
-  }
-});
+// const navbarMenu = document.querySelectorAll(".navbar__menu__item");
+// document.addEventListener("scroll", () => {
+//   const preSection = document.querySelector(".selected");
+//   for (let i = 0; i < sectionScroll.length - 1; i++) {
+//     if (scrollLimit <= window.scrollY) {
+//       preSection.classList.remove("selected");
+//       navbarMenu[navbarMenu.length - 1].classList.add("selected");
+//       return;
+//     }
+//     if (
+//       sectionScroll[i] <= window.scrollY &&
+//       window.scrollY < sectionScroll[i + 1]
+//     ) {
+//       preSection.classList.remove("selected");
+//       navbarMenu[i].classList.add("selected");
+//       return;
+//     }
+//   }
+// });
 
-window.visualViewport.addEventListener("resize", () => {
-  console.log(`limit : ${scrollLimit}`);
-  const preSection = document.querySelector(".selected");
-  for (let i = 0; i < sectionScroll.length - 1; i++) {
-    if (scrollLimit <= window.scrollY) {
-      preSection.classList.remove("selected");
-      navbarMenu[navbarMenu.length - 1].classList.add("selected");
-      return;
-    }
-    if (
-      sectionScroll[i] <= window.scrollY &&
-      window.scrollY < sectionScroll[i + 1]
-    ) {
-      preSection.classList.remove("selected");
-      navbarMenu[i].classList.add("selected");
-      return;
-    }
-  }
-});
+// window.visualViewport.addEventListener("resize", () => {
+//   console.log(`limit : ${scrollLimit}`);
+//   const preSection = document.querySelector(".selected");
+//   for (let i = 0; i < sectionScroll.length - 1; i++) {
+//     if (scrollLimit <= window.scrollY) {
+//       preSection.classList.remove("selected");
+//       navbarMenu[navbarMenu.length - 1].classList.add("selected");
+//       return;
+//     }
+//     if (
+//       sectionScroll[i] <= window.scrollY &&
+//       window.scrollY < sectionScroll[i + 1]
+//     ) {
+//       preSection.classList.remove("selected");
+//       navbarMenu[i].classList.add("selected");
+//       return;
+//     }
+//   }
+// });
 
 //****************
 
