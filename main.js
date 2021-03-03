@@ -48,10 +48,11 @@ function scrollIntoView(selection) {
   } else if (selection == "#contact") {
     down.classList.add("invisible");
     up.classList.add("visible");
+    const contactPage = document.querySelector("#contact");
+    contactPage.classList.add("cur-page");
   } else {
     down.classList.remove("invisible");
     up.classList.add("visible");
-    up.style.color = "var(--color-light-grey)";
   }
 }
 

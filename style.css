@@ -601,9 +601,18 @@ h3 {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  position: relative;
+  top: 30px;
+  opacity: 0;
   width: 100%;
   height: 100%;
   background-color: transparent;
+  transition: all 300ms ease;
+}
+
+#contact.cur-page {
+  top: 0px;
+  opacity: 1;
 }
 
 .contact__name-card {
@@ -814,6 +823,10 @@ h3 {
     flex-direction: column;
     width: 90%;
     max-height: 60%;
+  }
+
+  .skillset__right {
+    display: none;
   }
 
   .project {
