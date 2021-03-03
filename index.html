@@ -20,6 +20,18 @@
   </head>
 
   <body>
+    <!-- arrowUp Icon -->
+    <div class="arrowUp">
+      <button class="arrowUp_icon">
+        <i class="fas fa-chevron-up"></i>
+      </button>
+    </div>
+
+    <div class="arrowDown">
+      <button class="arrowDown_icon">
+        <i class="fas fa-chevron-down"></i>
+      </button>
+    </div>
     <!-- navbar -->
     <nav id="navbar">
       <div class="navbar__logo">
@@ -40,33 +52,30 @@
 
       <!-- Toggle button-->
       <button class="navbar__toggle-btn">
-        <i class="fas fa-bars"></i>
+        <i class="fas fa-chevron-left"></i>
       </button>
     </nav>
 
     <!-- home -->
     <section id="home">
-      <img
-        src="imgs/profile.png"
-        alt="profile photo"
-        class="home home__avatar"
-      />
       <h1 class="home home__title">Hello, <br />I'm Choi</h1>
       <h2 class="home home__description">I'm a software engineer</h2>
       <button class="home home__contact">Contact Me</button>
     </section>
-
-    <!-- arrowUp Icon -->
-    <button class="arrowUp_icon">
-      <i class="fas fa-angle-up"></i>
-    </button>
 
     <!-- about -->
     <section id="about" class="section section__container">
       <h1>About Me</h1>
       <p>Introduce Myself</p>
       <div class="about__majors">
-        <div class="major">
+        <button class="major__image-slider-button left" onclick="plusDivs(-1)">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="major__image-slider-button right" onclick="plusDivs(+1)">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+
+        <div class="major visible">
           <div class="major__icon">
             <i class="fab fa-js-square"></i>
           </div>
@@ -81,7 +90,7 @@
             <i class="fab fa-react"></i>
           </div>
           <h2 class="major__title">FrameWork</h2>
-          <div class="major__description">React, Vue</div>
+          <div class="major__description">React, Electron</div>
         </div>
 
         <div class="major">
@@ -89,7 +98,9 @@
             <i class="fab fa-node"></i>
           </div>
           <h2 class="major__title">Back-end</h2>
-          <div class="major__description">Node.js, GraphQL</div>
+          <div class="major__description">
+            Node.js, express, mongoDB, GraphQL
+          </div>
         </div>
       </div>
     </section>
@@ -165,6 +176,7 @@
               <h3 class="skillset__title">Etc</h3>
               <ul class="etc__list">
                 <li><span>Git</span></li>
+                <li><span>Webpack</span></li>
               </ul>
             </div>
           </div>
@@ -178,18 +190,14 @@
         <h1>My Work</h1>
         <h2>Project</h2>
         <div class="work__categories">
-          <button class="category__btn active" data-filter="*">
-            All <span class="category__count">8</span>
-          </button>
+          <button class="category__btn active" data-filter="*">All</button>
           <button class="category__btn" data-filter="front-end">
-            Front-end <span class="category__count">3</span>
+            Front-end
           </button>
           <button class="category__btn" data-filter="framework">
-            FrameWork <span class="category__count">3</span>
+            FrameWork
           </button>
-          <button class="category__btn" data-filter="back-end">
-            Back-end <span class="category__count">2</span>
-          </button>
+          <button class="category__btn" data-filter="back-end">Back-end</button>
         </div>
 
         <div class="work__projects">
@@ -237,50 +245,6 @@
               <span>description</span>
             </div>
           </a>
-          <a href="github" class="project" data-type="framework" target="blank">
-            <img
-              class="project__img"
-              src="imgs/project5.jpg"
-              alt="project_img"
-            />
-            <div class="project__description">
-              <h3>project title</h3>
-              <span>description</span>
-            </div>
-          </a>
-          <a href="github" class="project" data-type="framework" target="blank">
-            <img
-              class="project__img"
-              src="imgs/project6.jpg"
-              alt="project_img"
-            />
-            <div class="project__description">
-              <h3>project title</h3>
-              <span>description</span>
-            </div>
-          </a>
-          <a href="github" class="project" data-type="back-end" target="blank">
-            <img
-              class="project__img"
-              src="imgs/project7.jpg"
-              alt="project_img"
-            />
-            <div class="project__description">
-              <h3>project title</h3>
-              <span>description</span>
-            </div>
-          </a>
-          <a href="github" class="project" data-type="back-end" target="blank">
-            <img
-              class="project__img"
-              src="imgs/project8.jpg"
-              alt="project_img"
-            />
-            <div class="project__description">
-              <h3>project title</h3>
-              <span>description</span>
-            </div>
-          </a>
         </div>
       </div>
     </section>
@@ -299,27 +263,29 @@
             </div>
           </div>
 
-          <div class="testimonial">
+          <!-- <div class="testimonial">
             <div class="testimonial__speech-bubble">
               <p>they say osajdpjsdadjasjdadjpajodj</p>
               <p class="name"><a href="his github">his name</a> / his job</p>
             </div>
             <img src="imgs/cat2.jpg" alt="" class="testimonial__avatar" />
-          </div>
+          </div> -->
         </div>
       </div>
     </section>
 
     <!-- contact -->
     <section id="contact" class="section">
-      <h1 class="contact__title">Let's Talk</h1>
-      <h2 class="contact__email">cyk000418@naver.com</h2>
-      <div class="contact__links">
-        <a href="https://github.com/numeru">
-          <i class="fab fa-github"></i>
-        </a>
+      <div class="contact__name-card">
+        <h1 class="contact__title">Let's Talk</h1>
+        <h2 class="contact__email">numeru@naver.com</h2>
+        <div class="contact__links">
+          <a href="https://github.com/numeru">
+            <i class="fab fa-github"></i>
+          </a>
+        </div>
+        <p class="contact__right">Choi - All rights reserved</p>
       </div>
-      <p class="contact__right">Choi - All rights reserved</p>
     </section>
   </body>
 </html>

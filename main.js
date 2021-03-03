@@ -2,11 +2,27 @@
 
 //Make navbar transparent when it is on the top;
 
+let pageCnt = 1;
+
+const sections = [
+  "#home",
+  "#about",
+  "#skills",
+  "#work",
+  "#testimonials",
+  "#contact",
+];
+
+if (window.performance) {
+  pageCnt = 1;
+  scrollIntoView("#home");
+}
+
 const navbar = document.querySelector("#navbar");
 const navbarHeight = navbar.getBoundingClientRect().height;
 
 document.addEventListener("scroll", () => {
-  console.log(`scroll : ${window.scrollY}`);
+  // console.log(`scroll : ${window.scrollY}`);
   if (window.scrollY > navbarHeight) {
     navbar.classList.add("navbar--move");
   } else {
@@ -18,21 +34,56 @@ document.addEventListener("scroll", () => {
 
 function scrollIntoView(selection) {
   const scrollTo = document.querySelector(selection);
+
+  const down = document.querySelector(".arrowDown_icon");
+  const up = document.querySelector(".arrowUp_icon");
+
   scrollTo.scrollIntoView({ behavior: "smooth" });
+  if (selection == "#home") {
+    for (let i = 1; i < sections.length; i++) {
+      const otherPage = document.querySelector(sections[i]);
+      otherPage.classList.remove("cur-page");
+    }
+    up.classList.remove("visible");
+  } else if (selection == "#contact") {
+    down.classList.add("invisible");
+    up.classList.add("visible");
+  } else {
+    down.classList.remove("invisible");
+    up.classList.add("visible");
+    up.style.color = "var(--color-light-grey)";
+  }
 }
 
 const navbarMenu1 = document.querySelector(".navbar__menu1");
 const navbarMenu2 = document.querySelector(".navbar__menu2");
 
 navbarMenu1.addEventListener("click", (event) => {
+  let prev;
   const target = event.target;
   const link = target.dataset.link;
 
   if (link == null) {
     return;
   }
-  navbarMenu2.classList.remove("open");
+
+  for (let i = 1; i < sections.length - 1; i++) {
+    if (link == sections[i] && i > 1) {
+      console.log(sections[i - 1]);
+      prev = sections[i - 1];
+    }
+  }
+
+  const targetSection = document.querySelector(link);
   scrollIntoView(link);
+  setTimeout(() => {
+    targetSection.classList.add("cur-page");
+  }, 500);
+  const prevSection = document.querySelector(prev);
+  if (prevSection) {
+    prevSection.classList.remove("cur-page");
+  }
+  navbarMenu2.classList.remove("open");
 });
 
 // Navbar toggle button for small screen;
@@ -48,6 +99,7 @@ const contact_btn = document.querySelector(".home__contact");
 
 contact_btn.addEventListener("click", () => {
   scrollIntoView("#contact");
+  pageCnt = 6;
 });
 
 //Make home slowly fade to transparent as the window scrolls down;
@@ -61,17 +113,45 @@ document.addEventListener("scroll", () => {
   }
 });
 
-//Show "arrow up" button when scrolling down;
+// scroll "arrow down"
+
+const arrowDown = document.querySelector(".arrowDown_icon");
+
+arrowDown.addEventListener("click", () => {
+  const targetSection = document.querySelector(sections[pageCnt]);
+  scrollIntoView(sections[pageCnt]);
+  setTimeout(() => {
+    targetSection.classList.add("cur-page");
+  }, 500);
+  const prevSection = document.querySelector(sections[pageCnt - 1]);
+  if (prevSection) {
+    prevSection.classList.remove("cur-page");
+  }
+  pageCnt++;
+});
 
 const arrowUp = document.querySelector(".arrowUp_icon");
-document.addEventListener("scroll", () => {
-  if (window.scrollY > homeHeight / 2) arrowUp.classList.add("visible");
-  else arrowUp.classList.remove("visible");
-});
-
 arrowUp.addEventListener("click", () => {
-  scrollIntoView("#home");
+  const targetSection = document.querySelector(sections[pageCnt - 2]);
+  scrollIntoView(sections[pageCnt - 2]);
+  setTimeout(() => {
+    targetSection.classList.add("cur-page");
+  }, 500);
+  const prevSection = document.querySelector(sections[pageCnt - 1]);
+  if (prevSection) {
+    prevSection.classList.remove("cur-page");
+  }
+  pageCnt--;
 });
+// document.addEventListener("scroll", () => {
+//   if (window.scrollY > homeHeight / 2) arrowUp.classList.add("visible");
+//   else arrowUp.classList.remove("visible");
+// });
+
+// const arrowUP = document.querySelector(".arrowUp_icon");
+// arrowUP.addEventListener("click", () => {
+//   scrollIntoView("#home");
+// });
 
 //Filter Projects
 
@@ -162,7 +242,7 @@ window.visualViewport.addEventListener("resize", () => {
 
 const navbarMenu = document.querySelectorAll(".navbar__menu__item");
 document.addEventListener("scroll", () => {
-  console.log(`limit : ${scrollLimit}`);
+  // console.log(`limit : ${scrollLimit}`);
   const preSection = document.querySelector(".selected");
   for (let i = 0; i < sectionScroll.length - 1; i++) {
     if (scrollLimit <= window.scrollY) {
@@ -199,4 +279,73 @@ window.visualViewport.addEventListener("resize", () => {
       return;
     }
   }
+});
+
+//****************
+
+// let prevPage = 0;
+
+// document.addEventListener("scroll", () => {
+//   if (screen.height == window.scrollY) {
+//     console.log(
+//       `screen.height: ${screen.height} and window.scrollY = ${window.scrollY} goodgood!!!`
+//     );
+//   }
+
+//   // curPage.classList.toggle("cur-page");
+//   for (let i = 5; i > 0; i--) {
+//     if (
+//       screen.height * i - 200 <= window.scrollY &&
+//       window.scrollY <= screen.height * (i + 1) - 200 &&
+//       prevPage !== i
+//     ) {
+//       const curPage = document.querySelector(sections[i]);
+//       console.log(curPage);
+//       curPage.classList.add("cur-page");
+//       prevPage = i;
+//       return;
+//     }
+//   }
+// });
+
+// image slider
+
+let slideIndex = 0;
+
+function plusDivs(n) {
+  slideIndex += n;
+  showDivs(slideIndex);
+}
+
+function showDivs(n) {
+  const x = document.querySelectorAll(".major");
+  if (n > x.length - 1) {
+    slideIndex = 0;
+  }
+  if (n < 0) {
+    slideIndex = x.length - 1;
+  }
+  for (let i = 0; i < x.length; i++) {
+    x[i].classList.remove("visible");
+  }
+  console.log(slideIndex);
+  x[slideIndex].classList.add("visible");
+}
+
+//******************
+
+const nameCard = document.querySelector(".contact__name-card");
+
+nameCard.addEventListener("click", () => {
+  nameCard.classList.toggle("back");
+  nameCard.innerHTML = `
+    <h1 class="contact__title">Let's Talk</h1>
+    <h2 class="contact__email">numeru@naver.com</h2>
+    <div class="contact__links">
+      <a href="https://github.com/numeru">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <p class="contact__right">Choi - All rights reserved</p>
+  `;
 });
