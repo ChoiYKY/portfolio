@@ -731,7 +731,7 @@ h3 {
     top: 12px;
   } */
 
-  #navbar {
+  /* #navbar {
     flex-direction: column;
     align-items: flex-start;
     background-color: transparent;
@@ -781,7 +781,7 @@ h3 {
 
   #navbar.navbar--move {
     opacity: 1;
-  }
+  } */
 
   .home__contact {
     margin: 12px;
