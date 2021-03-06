@@ -6,6 +6,11 @@ let pageCnt = 1;
 
 const sections = ["#home", "#about", "#skills", "#work", "#contact"];
 
+if (window.onload) {
+  pageCnt = 1;
+  scrollIntoView("#home");
+}
+
 if (window.performance) {
   pageCnt = 1;
   scrollIntoView("#home");
