@@ -486,7 +486,7 @@ h3 {
 .project {
   position: relative;
   width: 20%;
-  max-height: 170px;
+  max-height: 150px;
   margin: 2px;
   background-color: var(--color-light-white);
   display: flex;
