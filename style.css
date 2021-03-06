@@ -751,7 +751,7 @@ h3 {
 
   .navbar__menu2.open {
     margin: 8px 0;
-  }
+  } */
 
   #home {
     padding: 20px;
@@ -763,7 +763,7 @@ h3 {
     padding-top: 50px;
   }
 
-  .navbar__menu1,
+  /* .navbar__menu1,
   .navbar__menu2 {
     width: 100%;
   }
