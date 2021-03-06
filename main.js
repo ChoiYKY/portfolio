@@ -49,36 +49,36 @@ function scrollIntoView(selection) {
   }
 }
 
-const navbarMenu1 = document.querySelector(".navbar__menu1");
-const navbarMenu2 = document.querySelector(".navbar__menu2");
+// const navbarMenu1 = document.querySelector(".navbar__menu1");
+// const navbarMenu2 = document.querySelector(".navbar__menu2");
 
-navbarMenu1.addEventListener("click", (event) => {
-  let prev;
-  const target = event.target;
-  const link = target.dataset.link;
+// navbarMenu1.addEventListener("click", (event) => {
+//   let prev;
+//   const target = event.target;
+//   const link = target.dataset.link;
 
-  if (link == null) {
-    return;
-  }
+//   if (link == null) {
+//     return;
+//   }
 
-  for (let i = 1; i < sections.length - 1; i++) {
-    if (link == sections[i] && i > 1) {
-      console.log(sections[i - 1]);
-      prev = sections[i - 1];
-    }
-  }
+//   for (let i = 1; i < sections.length - 1; i++) {
+//     if (link == sections[i] && i > 1) {
+//       console.log(sections[i - 1]);
+//       prev = sections[i - 1];
+//     }
+//   }
 
-  const targetSection = document.querySelector(link);
-  scrollIntoView(link);
-  setTimeout(() => {
-    targetSection.classList.add("cur-page");
-  }, 500);
-  const prevSection = document.querySelector(prev);
-  if (prevSection) {
-    prevSection.classList.remove("cur-page");
-  }
-  navbarMenu2.classList.remove("open");
-});
+//   const targetSection = document.querySelector(link);
+//   scrollIntoView(link);
+//   setTimeout(() => {
+//     targetSection.classList.add("cur-page");
+//   }, 500);
+//   const prevSection = document.querySelector(prev);
+//   if (prevSection) {
+//     prevSection.classList.remove("cur-page");
+//   }
+//   navbarMenu2.classList.remove("open");
+// });
 
 // Navbar toggle button for small screen;
 
@@ -98,14 +98,14 @@ contact_btn.addEventListener("click", () => {
 
 //Make home slowly fade to transparent as the window scrolls down;
 
-const home = document.getElementById("home");
-let homeHeight = home.getBoundingClientRect().height;
-const homeElements = document.querySelectorAll(".home");
-document.addEventListener("scroll", () => {
-  for (let i = 0; i < homeElements.length; i++) {
-    homeElements[i].style.opacity = 1 - window.scrollY / homeHeight;
-  }
-});
+// const home = document.getElementById("home");
+// let homeHeight = home.getBoundingClientRect().height;
+// const homeElements = document.querySelectorAll(".home");
+// document.addEventListener("scroll", () => {
+//   for (let i = 0; i < homeElements.length; i++) {
+//     homeElements[i].style.opacity = 1 - window.scrollY / homeHeight;
+//   }
+// });
 
 // scroll "arrow down"
 
