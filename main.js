@@ -6,15 +6,20 @@ let pageCnt = 1;
 
 const sections = ["#home", "#about", "#skills", "#work", "#contact"];
 
-if (window.onload) {
-  pageCnt = 1;
-  scrollIntoView("#home");
-}
+// window.onload = function () {
+//   pageCnt = 1;
+//   scrollIntoView("#home");
+// }
 
 if (window.performance) {
   pageCnt = 1;
   scrollIntoView("#home");
 }
+
+window.addEventListener("DOMContentLoaded", function () {
+  pageCnt = 1;
+  scrollIntoView("#home");
+});
 
 const navbar = document.querySelector("#navbar");
 const navbarHeight = navbar.getBoundingClientRect().height;
